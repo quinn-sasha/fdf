@@ -17,4 +17,5 @@ void handle_error(const char *message) {
     perror(message);
   else
     ft_putendl_fd(message, STDERR_FILENO);
+  exit(EXIT_FAILURE);
 }
