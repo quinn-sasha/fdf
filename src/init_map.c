@@ -53,26 +53,30 @@ void set_num_rows_and_columns(t_map *map, const char *filename) {
   close(fd);
 }
 
-t_point **allocate_grid(int num_rows, int num_cols) {
+void allocate_grid(t_map *map) {
   t_point **grid;
-  grid = malloc(num_rows * sizeof(t_point*));
+  grid = malloc(map->num_rows * sizeof(t_point*));
   if (grid == NULL) {
-    
+    // TODO: error message
+    handle_error("");
   }
   int i;
   i = 0;
-  while (i < num_cols) {
-    grid[i] = malloc(num_cols * sizeof(t_point));
+  while (i < map->num_rows) {
+    grid[i] = malloc(map->num_cols * sizeof(t_point));
+    if (grid[i] == NULL) {
+      // TODO: error message
+      map_error(map, "");
+    }
     i++;
   }
-  return grid;
+  map->grid = grid;
 }
 
 t_map init_map(const char *filename) {
   t_map map;
   set_num_rows_and_columns(&map, filename);
-  map.grid = allocate_grid();
-
+  allocate_grid(&map);
   // Fill grid
   // Return grid
   return map;
