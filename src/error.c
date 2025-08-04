@@ -19,3 +19,18 @@ void handle_error(const char *message) {
     ft_putendl_fd(message, STDERR_FILENO);
   exit(EXIT_FAILURE);
 }
+
+void free_grid(t_map *map) {
+  int i;
+  i = 0;
+  while (i < map->num_rows) {
+    free(map->grid[i]);
+    i++;
+  }
+  free(map->grid);
+}
+
+void map_error(t_map *map, const char *message) {
+  free_grid(map);
+  handle_error(message);
+}
