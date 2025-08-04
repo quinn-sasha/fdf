@@ -6,15 +6,15 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/04 10:27:13 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/04 16:52:20 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#include "libft/libft.h"
-#include "get_next_line/get_next_line.h"
+#include "../libft/libft.h"
+#include "../get_next_line/get_next_line.h"
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
@@ -24,6 +24,9 @@
 #include <errno.h>
 #include <math.h>
 
+
+// Error messages
+# define FORMAT "Usage: ./fdf filename.fdf"
 
 
 typedef struct s_point {
@@ -53,6 +56,10 @@ typedef struct s_data {
   t_map map;
 } t_data;
 
+// error.c
 void handle_error(const char *message);
+void free_grid(t_map *map);
+void map_error(t_map *map, const char *message);
+
 
 #endif
