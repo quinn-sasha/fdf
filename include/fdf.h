@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/04 16:52:20 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/05 14:14:37 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_point {
   int x;
   int y;
   int z;
+  int transformed_x;
+  int transformed_y;
   uint32_t color;
 } t_point;
 
