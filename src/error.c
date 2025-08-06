@@ -12,7 +12,7 @@
 
 #include "../include/fdf.h"
 
-void handle_error(const char *message) {
+void handle_error(char *message) {
   if (errno > 0)
     perror("FdF");
   else
@@ -30,7 +30,7 @@ void free_grid(t_map *map) {
   free(map->grid);
 }
 
-void map_error(t_map *map, const char *message) {
+void map_error(t_map *map, char *message) {
   free_grid(map);
   handle_error(message);
 }
