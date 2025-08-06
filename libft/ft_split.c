@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/02 18:41:36 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/05 11:56:28 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/06 16:31:54 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	**ft_split(char const *s, char c)
 		while (s[i] == c)
 			i++;
 		word_end = get_word_end(s, c, i);
-		result[nword] = ft_substr(s, i, word_end - i);
+		result[nword] = ft_substr(s, i, word_end - 1);
 		if (!result[nword])
 			return (free_words(result));
 		i = word_end;
@@ -99,7 +99,6 @@ int	main(int argc, char *argv[])
 	char const	*s;
 	char		c;
 	char		**result;
-	char		**result2;
 
 	(void)argc;
 	s = argv[1];
@@ -108,11 +107,6 @@ int	main(int argc, char *argv[])
 	for (int i = 0; result[i]; i++)
 	{
 		printf("%s\n", result[i]);
-	}
-	result2 = ft_split("hello!", ' ');
-	for (int i = 0; result2[i]; i++)
-	{
-		printf("%s\n", result2[i]);
 	}
 }
 */

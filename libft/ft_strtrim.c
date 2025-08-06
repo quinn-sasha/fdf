@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 11:43:15 by squinn            #+#    #+#             */
-/*   Updated: 2025/07/05 11:20:24 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/06 16:34:42 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	right = ft_strlen(s1) - 1;
 	while (right >= 0 && is_in_set(s1[right], set))
 		right--;
-	return (ft_substr(s1, left, right - left + 1));
+	return (ft_substr(s1, left, right));
 }
 
 /*
