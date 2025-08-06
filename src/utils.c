@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:06:13 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/06 10:13:32 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/06 10:39:46 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_point new_point(int x, int y, int z, uint32_t color) {
   point.x = x;
   point.y = y;
   point.z = z;
-  point.transformed_x = NULL;
-  point.transformed_y = NULL;
+  point.transformed_x = -1;
+  point.transformed_y = -1;
   point.color = color;
   return point;
 }
