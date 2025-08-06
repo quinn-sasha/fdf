@@ -39,13 +39,13 @@ void allocate_grid(t_map *map) {
   grid = malloc(map->num_rows * sizeof(t_point*));
   if (grid == NULL)
     handle_error(MALLOC);
-  int i;
-  i = 0;
-  while (i < map->num_rows) {
-    grid[i] = malloc(map->num_cols * sizeof(t_point));
-    if (grid[i] == NULL)
+  int row;
+  row = 0;
+  while (row < map->num_rows) {
+    grid[row] = malloc(map->num_cols * sizeof(t_point));
+    if (grid[row] == NULL)
       map_error(map, MALLOC);
-    i++;
+    row++;
   }
   map->grid = grid;
 }
