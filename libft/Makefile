@@ -6,7 +6,7 @@
 #    By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/04 13:06:03 by squinn            #+#    #+#              #
-#    Updated: 2025/08/05 18:33:44 by squinn           ###   ########.fr        #
+#    Updated: 2025/08/06 09:03:29 by squinn           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS = ft_isalpha.c \
 		ft_memcmp.c \
 		ft_strnstr.c \
 		ft_atoi.c \
+		ft_atoi_base.c \
 		ft_calloc.c \
 		ft_strdup.c \
 		ft_substr.c \
