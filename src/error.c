@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/fdf.h"
+#include "../include/fdf.h"
 
 void handle_error(const char *message) {
   if (errno > 0)
