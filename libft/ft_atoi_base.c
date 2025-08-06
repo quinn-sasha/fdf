@@ -6,28 +6,11 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 08:38:58 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/06 09:00:56 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:28:21 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	ft_isspace(int c)
-{
-	if (c == ' ')
-		return (1);
-	if (c == '\f')
-		return (1);
-	if (c == '\n')
-		return (1);
-	if (c == '\r')
-		return (1);
-	if (c == '\t')
-		return (1);
-	if (c == '\v')
-		return (1);
-	return (0);
-}
 
 int	get_value(char c, const char *base_numbers)
 {
@@ -52,7 +35,7 @@ int	ft_atoi_base(char *str, const char *base_numbers)
 	int	result;
 	int	value;
 
-	while (ft_isspace(*str))
+	while (*str == ' ')
 		str++;
 	sign = 1;
 	if (*str == '-')
