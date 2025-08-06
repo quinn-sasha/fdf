@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:06:13 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/06 09:52:01 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/06 10:13:32 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,23 @@ t_point new_point(int x, int y, int z, uint32_t color) {
 void make_upper(unsigned int i, char *c) {
   (void)i;
   ft_toupper(*c);
+}
+
+int count_num_cols(char *line) {
+  int result;
+  int i;
+
+  result = 0;
+  i = 0;
+  while (line[i]) {
+    if (line[i] == ' ') {
+      i++;
+      continue;
+    }
+    while (line[i] != ' ') {
+      i++;
+    }
+    result++;
+  }
+  return result;
 }

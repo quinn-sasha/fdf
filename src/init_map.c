@@ -12,29 +12,10 @@
 
 #include "../include/fdf.h"
 
-int count_num_cols(char *line) {
-  int result;
-  int i;
-
-  result = 0;
-  i = 0;
-  while (line[i]) {
-    if (line[i] == ' ') {
-      i++;
-      continue;
-    }
-    while (line[i] && line[i] != ' ') {
-      i++;
-    }
-    result++;
-  }
-  return result;
-}
-
 /*
 Assumption:
 - get_next_line works without error
-- Input file contains at least 1 line
+- Map format is correct
 */
 void set_num_rows_and_columns(t_map *map, const char *filename) {
   int fd = open(filename, O_RDONLY);
@@ -56,18 +37,14 @@ void set_num_rows_and_columns(t_map *map, const char *filename) {
 void allocate_grid(t_map *map) {
   t_point **grid;
   grid = malloc(map->num_rows * sizeof(t_point*));
-  if (grid == NULL) {
-    // TODO: error message
-    handle_error("");
-  }
+  if (grid == NULL)
+    handle_error(MALLOC);
   int i;
   i = 0;
   while (i < map->num_rows) {
     grid[i] = malloc(map->num_cols * sizeof(t_point));
-    if (grid[i] == NULL) {
-      // TODO: error message
-      map_error(map, "");
-    }
+    if (grid[i] == NULL)
+      map_error(map, MALLOC);
     i++;
   }
   map->grid = grid;
@@ -96,7 +73,7 @@ void fill_grid(t_map *map, const char *filename) {
   int fd = open(filename, O_RDONLY);
   int row = 0;
   while (row < map->num_rows) {
-
+    fill_one_row(map, row, fd);
     row++;
   }
   close(fd);
@@ -105,5 +82,5 @@ void fill_grid(t_map *map, const char *filename) {
 void init_map(t_map *map, const char *filename) {
   set_num_rows_and_columns(map, filename);
   allocate_grid(map);
-  fill_grid();
+  fill_grid(map, filename);
 }
