@@ -73,30 +73,37 @@ void allocate_grid(t_map *map) {
   map->grid = grid;
 }
 
+/*
+Assumption:
+- get_next_line() works without error
+- ft_split() works without error
+*/
+void fill_one_row(t_map *map, int row, int fd) {
+  char *line = get_next_line(fd);
+  char **words = ft_split(line, ' ');
+  free(line);
+  int col = 0;
+  while (col < map->num_cols) {
+    int z = ft_atoi(words[col]);
+    uint32_t color = parse_color(words[col]);
+    map->grid[row][col] = new_point(col, row, z, color);
+    col++;
+  }
+  free_words(words);
+}
+
 void fill_grid(t_map *map, const char *filename) {
   int fd = open(filename, O_RDONLY);
   int row = 0;
   while (row < map->num_rows) {
-    int col = 0;
-    while (col < map->num_cols) {
-      char *line = get_next_line(fd);
-      char **words = ft_split(line, ' ');
-      free(line);
-      
 
-      map->grid[row][col] = new_point();
-      col++;
-    }
     row++;
   }
+  close(fd);
 }
 
-t_map init_map(const char *filename) {
-  t_map map;
-  set_num_rows_and_columns(&map, filename);
-  allocate_grid(&map);
-  // Fill grid
+void init_map(t_map *map, const char *filename) {
+  set_num_rows_and_columns(map, filename);
+  allocate_grid(map);
   fill_grid();
-  // Return grid
-  return map;
 }
