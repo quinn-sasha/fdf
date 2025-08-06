@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:05:24 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/06 11:08:00 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/06 11:57:55 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int count_num_cols(char *line) {
       i++;
       continue;
     }
-    while (line[i] != ' ') {
+    while (line[i] && line[i] != ' ') {
       i++;
     }
     result++;
