@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:06:13 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/07 10:43:06 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/07 18:36:02 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,16 @@ t_point new_point(double x, double y, double z, uint32_t color) {
   point.transformed_z = -1;
   point.color = color;
   return point;
+}
+
+int ft_min(int a, int b) {
+  if (a < b)
+    return (a);
+  return (b);
+}
+
+int ft_max(int a, int b) {
+  if (a > b)
+    return (a);
+  return (b);
 }
