@@ -5,8 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 17:13:11 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/07 11:58:14 by squinn           ###   ########.fr       */
+/*   Created: 2025/08/06 17:13:11 by squinn            #+#    #+#             *//*   Updated: 2025/08/07 11:58:14 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +60,58 @@ void isometric_project(t_map *map) {
   }
 }
 
+// Assume (x, y) is in the range of int size
+void set_min_and_max_x_y(t_map *map) {
+  map->min_x = INT_MAX;
+  map->min_y = INT_MAX;
+  map->max_x = INT_MIN;
+  map->max_y = INT_MIN;
+
+  int row = 0;
+  while (row < map->num_rows) {
+    int col = 0;
+    while (col < map->num_cols) {
+      t_point point = map->grid[row][col];
+      if (point.transformed_x < map->min_x)
+        map->min_x = point.transformed_x;
+      if (point.transformed_x > map->max_x)
+        map->max_x = point.transformed_x;
+      if (point.transformed_y < map->min_y)
+        map->min_y = point.transformed_y;
+      if (point.transformed_y > map->max_y)
+        map->max_y = point.transformed_y;
+      col++;
+    }
+    row++;
+  }
+}
+
+void translate(t_map* map, int dx, int dy) {
+  int row = 0;
+  while (row < map->num_rows) {
+    int col = 0;
+    while (col < map->num_cols) {
+      t_point *point = &(map->grid[row][col]);
+      point->transformed_x += dx;
+      point->transformed_y += dy;
+      col++;
+    }
+    row++;
+  }
+}
+
+// Assume (min_x + max_x) and (min_y + max_y) don't overflow
+void shift_map_to_center(t_map *map) {
+  set_min_and_max_x_y(map);
+  int mid_x = (map->min_x + map->max_x) / 2;
+  int mid_y = (map->min_y + map->max_y) / 2;
+  int x_offset = WIDTH / 2 - mid_x;
+  int y_offset = HEIGHT / 2 - mid_y;
+  translate(map, x_offset, y_offset);
+}
+
 void transform(t_map *map) {
   isometric_project(map);
-  // 平行移動
 
   // ズーム
 }
