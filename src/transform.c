@@ -132,5 +132,5 @@ void make_map_fit_on_display(t_map *map) {
 void transform(t_map *map) {
   isometric_project(map);
   shift_map_to_center(map);
-
+  make_map_fit_on_display(map);
 }
