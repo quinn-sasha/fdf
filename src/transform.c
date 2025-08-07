@@ -107,7 +107,17 @@ void shift_map_to_center(t_map *map) {
 }
 
 void scale(t_map *map, int rate) {
-
+  int row = 0;
+  while (row < map->num_rows) {
+    int col = 0;
+    while (col < map->num_cols) {
+      t_point *point = &(map->grid[row][col]);
+      point->transformed_x *= rate;
+      point->transformed_y *= rate;
+      col++;
+    }
+    row++;
+  }
 }
 
 void make_map_fit_on_display(t_map *map) {
