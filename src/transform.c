@@ -72,14 +72,10 @@ void set_min_and_max_x_y(t_map *map) {
     int col = 0;
     while (col < map->num_cols) {
       t_point point = map->grid[row][col];
-      if (point.transformed_x < map->min_x)
-        map->min_x = point.transformed_x;
-      if (point.transformed_x > map->max_x)
-        map->max_x = point.transformed_x;
-      if (point.transformed_y < map->min_y)
-        map->min_y = point.transformed_y;
-      if (point.transformed_y > map->max_y)
-        map->max_y = point.transformed_y;
+      map->min_x = ft_min(map->min_x, point.transformed_x);
+      map->min_y = ft_min(map->min_y, point.transformed_y);
+      map->max_x = ft_max(map->max_x, point.transformed_x);
+      map->max_y = ft_max(map->max_y, point.transformed_y);
       col++;
     }
     row++;
