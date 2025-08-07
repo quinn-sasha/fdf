@@ -110,8 +110,21 @@ void shift_map_to_center(t_map *map) {
   translate(map, x_offset, y_offset);
 }
 
+void scale(t_map *map, int rate) {
+
+}
+
+void make_map_fit_on_display(t_map *map) {
+  int map_width = map->max_x - map->min_x;
+  int map_height = map->max_y - map->min_y;
+  int x_scaling_rate = WIDTH / map_width;
+  int y_scaling_rate = HEIGHT / map_height;
+  int scaling_rate = ft_min(x_scaling_rate, y_scaling_rate);
+  scale(map, scaling_rate);
+}
+
 void transform(t_map *map) {
   isometric_project(map);
+  shift_map_to_center(map);
 
-  // ズーム
 }
