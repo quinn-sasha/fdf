@@ -6,13 +6,13 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:06:13 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/06 19:13:51 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/07 10:43:06 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
 
-t_point new_point(int x, int y, int z, uint32_t color) {
+t_point new_point(double x, double y, double z, uint32_t color) {
   t_point point;
   point.x = x;
   point.y = y;
