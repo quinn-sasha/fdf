@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 17:13:11 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/07 11:25:00 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/07 11:58:14 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,23 @@ void rotate_around_x_axis(t_map *map, int angle) {
 void isometric_project(t_map *map) {
   rotate_around_z_axis(map, 45);
   rotate_around_x_axis(map, atan(sin(45)));
-  // R(arctan(-1/sqrt(2)))
+  int row = 0;
+  while (row < map->num_rows) {
+    int col = 0;
+    while (col < map->num_cols) {
+      t_point *point = &(map->grid[row][col]);
+      point->transformed_x = (int)point->x;
+      point->transformed_y = (int)point->y;
+      point->transformed_z = (int)point->z;
+      col++;
+    }
+    row++;
+  }
 }
 
 void transform(t_map *map) {
   isometric_project(map);
   // 平行移動
+
   // ズーム
 }
