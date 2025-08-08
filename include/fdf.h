@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 14:28:40 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 14:33:01 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <errno.h>
-#include <float.h>
 #include <math.h>
+#include <float.h>
 
 // display
 # define WIDTH 1920
