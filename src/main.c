@@ -42,7 +42,7 @@ int main(char argc, char *argv[])
   transform(&map);
   t_data data;
   data.map = map;
-  // Initialize minilibx variables
+  init_mlx_resources(&data);
   // Draw line
   // Free resources
   exit(EXIT_SUCCESS);
