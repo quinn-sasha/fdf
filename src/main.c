@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:23:43 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/04 13:01:04 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 15:04:41 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int main(char argc, char *argv[])
 {
-  // TODO: error handling
-  if (argc != 2)
-    handle_error("");
-  // Read file and allocate data structure
-  // Transform isometric view
+  if (argc != 2 || !is_valid(argv[1]));
+    handle_error(FORMAT);
+  t_map map;
+  init_map(&map, argv[1]);
+  transform(&map);
   // Initialize minilibx variables
   // Draw line
   // Free resources
