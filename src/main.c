@@ -5,12 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/03 16:23:43 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 15:04:41 by squinn           ###   ########.fr       */
+/*   Created: 2025/08/03 16:23:43 by squinn            #+#    #+#             /*   Updated: 2025/08/08 17:14:58 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/fdf.h"
+
+void init_mlx_resources(t_data *data) {
+  data->mlx = NULL;
+  data->window = NULL;
+  data->img.mlx_img = NULL;
+
+  data->mlx = mlx_init();
+  if (!data->mlx) {
+    free_grid(&data->map);
+    handle_error(MLX_ERROR);
+  }
+  data->window = mlx_new_window(data->mlx, WIDTH, HEIGHT, "Root window");
+  if (!data->window)
+    handle_mlx_error(data);
+  data->img.mlx_img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+  if (!data->img.mlx_img)
+    handle_mlx_error(data);
+  t_image *image = &data->img;
+  image->address = mlx_get_data_addr(
+    image->mlx_img, &image->bits_per_pixel, &image->row_size, &image->endian);
+  (void)image->endian;
+}
 
 int main(char argc, char *argv[])
 {
@@ -19,6 +40,8 @@ int main(char argc, char *argv[])
   t_map map;
   init_map(&map, argv[1]);
   transform(&map);
+  t_data data;
+  data.map = map;
   // Initialize minilibx variables
   // Draw line
   // Free resources
