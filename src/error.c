@@ -30,7 +30,7 @@ void free_grid(t_map *map) {
   free(map->grid);
 }
 
-void map_error(t_map *map, char *message) {
+void free_map_and_handle_error(t_map *map, char *message) {
   free_grid(map);
   handle_error(message);
 }

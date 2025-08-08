@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 14:33:01 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 17:06:02 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "../libft/libft.h"
 #include "../get_next_line/get_next_line.h"
+#include "../mlx_linux/mlx.h"
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <limits.h>
@@ -37,6 +38,7 @@
 // Error messages
 # define FORMAT "Usage: ./fdf filename.fdf"
 # define MALLOC "malloc() failed"
+# define MLX_ERROR "Minilibx library failed"
 
 
 typedef struct s_point {
@@ -61,6 +63,7 @@ typedef struct s_map {
 
 typedef struct s_image {
   void *mlx_img;
+  char *base_address;
   int bits_per_pixel;
   int row_size;
   int endian;
@@ -69,7 +72,7 @@ typedef struct s_image {
 typedef struct s_data {
   void *mlx;
   void *window;
-  t_image img;
+  t_image image;
   t_map map;
 } t_data;
 
@@ -95,11 +98,12 @@ uint32_t parse_color(char *str);
 // error.c
 void handle_error(char *message);
 void free_grid(t_map *map);
-void map_error(t_map *map, char *message);
+void free_map_and_handle_error(t_map *map, char *message);
 // utils.c
 t_point new_point(double x, double y, double z, uint32_t color);
 double double_min(double a, double b);
 double double_max(double a, double b);
+int is_valid_filename(char *filename);
 // additional_libft.c
 void make_upper(unsigned int i, char *c);
 int count_num_cols(char *line);

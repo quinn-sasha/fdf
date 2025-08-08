@@ -44,7 +44,7 @@ void allocate_grid(t_map *map) {
   while (row < map->num_rows) {
     grid[row] = malloc(map->num_cols * sizeof(t_point));
     if (grid[row] == NULL)
-      map_error(map, MALLOC);
+      free_map_and_handle_error(map, MALLOC);
     row++;
   }
   map->grid = grid;
