@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/05 14:14:37 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 11:55:16 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,36 @@
 #include "../get_next_line/get_next_line.h"
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <limits.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <errno.h>
+#include <float.h>
+# define __USE_MISC
 #include <math.h>
 
+// display
+# define WIDTH 1920
+# define HEIGHT 1080
+// Color
+# define WHITE 0xFFFFFFFF
+# define DEFAULT_COLOR WHITE
+# define OPAQUE_MASK 0xFF000000
 
 // Error messages
 # define FORMAT "Usage: ./fdf filename.fdf"
+# define MALLOC "malloc() failed"
 
 
 typedef struct s_point {
-  int x;
-  int y;
-  int z;
+  double x;
+  double y;
+  double z;
   int transformed_x;
   int transformed_y;
+  int transformed_z;
   uint32_t color;
 } t_point;
 
@@ -42,6 +54,10 @@ typedef struct s_map {
   t_point **grid;
   int num_rows;
   int num_cols;
+  int min_x;
+  int min_y;
+  int max_x;
+  int max_y;
 } t_map;
 
 typedef struct s_image {
@@ -58,10 +74,27 @@ typedef struct s_data {
   t_map map;
 } t_data;
 
-// error.c
-void handle_error(const char *message);
-void free_grid(t_map *map);
-void map_error(t_map *map, const char *message);
+// init_map.c
+void set_num_rows_and_columns(t_map *map, const char *filename);
+void allocate_grid(t_map *map);
+void fill_one_row(t_map *map, int row, int fd);
+void fill_grid(t_map *map, const char *filename);
+void init_map(t_map *map, const char *filename);
+// transform.c
 
+// color.c
+uint32_t parse_color(char *str);
+// error.c
+void handle_error(char *message);
+void free_grid(t_map *map);
+void map_error(t_map *map, char *message);
+// utils.c
+t_point new_point(double x, double y, double z, uint32_t color);
+double double_min(double a, double b);
+double double_max(double a, double b);
+// additional_libft.c
+void make_upper(unsigned int i, char *c);
+int count_num_cols(char *line);
+void *free_words(char **words);
 
 #endif
