@@ -98,7 +98,6 @@ void translate(t_map* map, int dx, int dy) {
 
 // Assume (min_x + max_x) and (min_y + max_y) don't overflow
 void shift_map_to_center(t_map *map) {
-  set_min_and_max_x_y(map);
   int mid_x = (map->min_x + map->max_x) / 2;
   int mid_y = (map->min_y + map->max_y) / 2;
   int x_offset = WIDTH / 2 - mid_x;
@@ -134,6 +133,7 @@ void make_map_fit_on_display(t_map *map) {
 
 void transform(t_map *map) {
   isometric_project(map);
+  set_min_and_max_x_y(map);
   shift_map_to_center(map);
   make_map_fit_on_display(map);
 }
