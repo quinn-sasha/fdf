@@ -11,38 +11,6 @@
 
 #include "../include/fdf.h"
 
-void rotate_around_z_axis(t_map *map, double angle) {
-  int row = 0;
-  while (row < map->num_rows) {
-    int col = 0;
-    while (col < map->num_cols) {
-      t_point *point = &(map->grid[row][col]);
-      double x = map->grid[row][col].x;
-      double y = map->grid[row][col].y;
-      point->x = x * cos(angle) - y * sin(angle);
-      point->y = x * sin(angle) + y * cos(angle);
-      col++;
-    }
-    row++;
-  }
-}
-
-void rotate_around_x_axis(t_map *map, double angle) {
-  int row = 0;
-  while (row < map->num_rows) {
-    int col = 0;
-    while (col < map->num_cols) {
-      t_point *point = &(map->grid[row][col]);
-      double y = map->grid[row][col].y;
-      double z = map->grid[row][col].z;
-      point->y = y * cos(angle) - z * sin(angle);
-      point->z = y * sin(angle) + z * cos(angle);
-      col++;
-    }
-    row++;
-  }
-}
-
 void isometric_project(t_map *map) {
   double angle1 = (double)45 * (M_PI / 180);
   double angle2 = atan(sin(45)) * (M_PI / 180);
@@ -72,20 +40,6 @@ void set_min_and_max_x_y(t_map *map) {
   }
 }
 
-void translate(t_map* map, double dx, double dy) {
-  int row = 0;
-  while (row < map->num_rows) {
-    int col = 0;
-    while (col < map->num_cols) {
-      t_point *point = &(map->grid[row][col]);
-      point->x += dx;
-      point->y += dy;
-      col++;
-    }
-    row++;
-  }
-}
-
 // Assume (min_x + max_x) and (min_y + max_y) don't overflow
 void shift_map_to_center(t_map *map) {
   double mid_x = (map->min_x + map->max_x) / 2;
@@ -93,20 +47,6 @@ void shift_map_to_center(t_map *map) {
   double x_offset = WIDTH / 2 - mid_x;
   double y_offset = HEIGHT / 2 - mid_y;
   translate(map, x_offset, y_offset);
-}
-
-void scale(t_map *map, double rate) {
-  int row = 0;
-  while (row < map->num_rows) {
-    int col = 0;
-    while (col < map->num_cols) {
-      t_point *point = &(map->grid[row][col]);
-      point->x *= rate;
-      point->y *= rate;
-      col++;
-    }
-    row++;
-  }
 }
 
 void make_map_fit_on_display(t_map *map) {

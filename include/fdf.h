@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 11:55:16 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 14:20:19 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,16 @@ void fill_one_row(t_map *map, int row, int fd);
 void fill_grid(t_map *map, const char *filename);
 void init_map(t_map *map, const char *filename);
 // transform.c
-
+void isometric_project(t_map *map);
+void set_min_and_max_x_y(t_map *map);
+void shift_map_to_center(t_map *map);
+void make_map_fit_on_display(t_map *map);
+void transform(t_map *map);
+// transform2.c
+void rotate_around_z_axis(t_map *map, double angle);
+void rotate_around_x_axis(t_map *map, double angle);
+void translate(t_map* map, double dx, double dy);
+void scale(t_map *map, double rate);
 // color.c
 uint32_t parse_color(char *str);
 // error.c
