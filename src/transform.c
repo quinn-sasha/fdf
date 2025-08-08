@@ -106,7 +106,7 @@ void shift_map_to_center(t_map *map) {
   translate(map, x_offset, y_offset);
 }
 
-void scale(t_map *map, int rate) {
+void scale(t_map *map, double rate) {
   int row = 0;
   while (row < map->num_rows) {
     int col = 0;
@@ -123,9 +123,12 @@ void scale(t_map *map, int rate) {
 void make_map_fit_on_display(t_map *map) {
   int map_width = map->max_x - map->min_x;
   int map_height = map->max_y - map->min_y;
-  int x_scaling_rate = WIDTH / map_width;
-  int y_scaling_rate = HEIGHT / map_height;
-  int scaling_rate = ft_min(x_scaling_rate, y_scaling_rate);
+  double x_scaling_rate = (double)WIDTH / map_width;
+  double y_scaling_rate = (double)HEIGHT / map_height;
+  double scaling_rate = x_scaling_rate;
+  if (x_scaling_rate > y_scaling_rate) {
+    scaling_rate = y_scaling_rate;
+  }
   scale(map, scaling_rate);
 }
 
