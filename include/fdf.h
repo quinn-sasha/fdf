@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 14:20:19 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 14:28:03 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 #include <stdint.h>
 #include <errno.h>
 #include <float.h>
-# define __USE_MISC
 #include <math.h>
 
 // display
