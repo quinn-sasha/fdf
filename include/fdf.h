@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 14:28:03 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 14:28:40 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ typedef struct s_map {
   t_point **grid;
   int num_rows;
   int num_cols;
-  int min_x;
-  int min_y;
-  int max_x;
-  int max_y;
+  double min_x;
+  double min_y;
+  double max_x;
+  double max_y;
 } t_map;
 
 typedef struct s_image {
