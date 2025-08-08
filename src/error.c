@@ -30,7 +30,19 @@ void free_grid(t_map *map) {
   free(map->grid);
 }
 
-void free_map_and_handle_error(t_map *map, char *message) {
-  free_grid(map);
-  handle_error(message);
+void free_mlx_resources_if_allocated(t_data *data) {
+  if (data->img.mlx_img) {
+    mlx_destroy_image(data->mlx, data->img.mlx_img);
+  }
+  if (data->window) {
+    mlx_destroy_window(data->mlx, data->window);
+  }
+  mlx_destroy_display(data->mlx);
+  free(data->mlx);
+}
+
+void handle_mlx_error(t_data *data) {
+  free_grid(&data->map);
+  free_mlx_resources_if_allocated(data);
+  handle_error(MLX_ERROR);
 }
