@@ -11,7 +11,7 @@
 
 #include "../include/fdf.h"
 
-void rotate_around_z_axis(t_map *map, int angle) {
+void rotate_around_z_axis(t_map *map, double angle) {
   int row = 0;
   while (row < map->num_rows) {
     int col = 0;
@@ -27,7 +27,7 @@ void rotate_around_z_axis(t_map *map, int angle) {
   }
 }
 
-void rotate_around_x_axis(t_map *map, int angle) {
+void rotate_around_x_axis(t_map *map, double angle) {
   int row = 0;
   while (row < map->num_rows) {
     int col = 0;
@@ -44,20 +44,22 @@ void rotate_around_x_axis(t_map *map, int angle) {
 }
 
 void isometric_project(t_map *map) {
-  rotate_around_z_axis(map, 45);
-  rotate_around_x_axis(map, atan(sin(45)));
-  int row = 0;
-  while (row < map->num_rows) {
-    int col = 0;
-    while (col < map->num_cols) {
-      t_point *point = &(map->grid[row][col]);
-      point->transformed_x = (int)point->x;
-      point->transformed_y = (int)point->y;
-      point->transformed_z = (int)point->z;
-      col++;
-    }
-    row++;
-  }
+  double angle1 = (double)45 * (M_PI / 180);
+  double angle2 = atan(sin(45)) * (M_PI / 180);
+  rotate_around_z_axis(map, angle1);
+  rotate_around_x_axis(map, angle2);
+  // int row = 0;
+  // while (row < map->num_rows) {
+  //   int col = 0;
+  //   while (col < map->num_cols) {
+  //     t_point *point = &(map->grid[row][col]);
+  //     point->transformed_x = (int)point->x;
+  //     point->transformed_y = (int)point->y;
+  //     point->transformed_z = (int)point->z;
+  //     col++;
+  //   }
+  //   row++;
+  // }
 }
 
 // Assume (x, y) is in the range of int size
