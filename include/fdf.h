@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 17:06:02 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 18:21:21 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct s_map {
 
 typedef struct s_image {
   void *mlx_img;
-  char *base_address;
+  char *address;
   int bits_per_pixel;
   int row_size;
   int endian;
@@ -72,7 +72,7 @@ typedef struct s_image {
 typedef struct s_data {
   void *mlx;
   void *window;
-  t_image image;
+  t_image img;
   t_map map;
 } t_data;
 
@@ -98,7 +98,8 @@ uint32_t parse_color(char *str);
 // error.c
 void handle_error(char *message);
 void free_grid(t_map *map);
-void free_map_and_handle_error(t_map *map, char *message);
+void free_mlx_resources_if_allocated(t_data *data);
+void handle_mlx_error(t_data *data);
 // utils.c
 t_point new_point(double x, double y, double z, uint32_t color);
 double double_min(double a, double b);
