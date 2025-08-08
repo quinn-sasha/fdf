@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 18:21:21 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 18:36:59 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void scale(t_map *map, double rate);
 // color.c
 uint32_t parse_color(char *str);
 // error.c
+int is_valid_filename(char *filename);
 void handle_error(char *message);
 void free_grid(t_map *map);
 void free_mlx_resources_if_allocated(t_data *data);
@@ -104,7 +105,6 @@ void handle_mlx_error(t_data *data);
 t_point new_point(double x, double y, double z, uint32_t color);
 double double_min(double a, double b);
 double double_max(double a, double b);
-int is_valid_filename(char *filename);
 // additional_libft.c
 void make_upper(unsigned int i, char *c);
 int count_num_cols(char *line);

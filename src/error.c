@@ -12,6 +12,15 @@
 
 #include "../include/fdf.h"
 
+int is_valid_filename(char *filename) {
+  int len = ft_strlen(filename);
+  if (len <= 4) {
+    return (FALSE);
+  }
+  filename += len - 4;
+  return (ft_strncmp(filename, ".fdf", 4) == 0);
+}
+
 void handle_error(char *message) {
   if (errno > 0)
     perror("FdF");
