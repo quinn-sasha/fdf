@@ -35,7 +35,7 @@ void init_mlx_resources(t_data *data) {
 
 int main(char argc, char *argv[])
 {
-  if (argc != 2 || !is_valid(argv[1]));
+  if (argc != 2 || !is_valid_filename(argv[1]));
     handle_error(FORMAT);
   t_map map;
   init_map(&map, argv[1]);
