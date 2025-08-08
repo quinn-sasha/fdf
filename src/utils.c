@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:06:13 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 15:22:45 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/08 18:36:06 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,4 @@ double double_max(double a, double b) {
   if (a > b)
     return (a);
   return (b);
-}
-
-int is_valid_filename(char *filename) {
-  int len = ft_strlen(filename);
-  if (len <= 4) {
-    return (FALSE);
-  }
-  filename += len - 4;
-  return (ft_strncmp(filename, ".fdf", 4) == 0);
 }
