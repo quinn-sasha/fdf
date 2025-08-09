@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 15:59:07 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 16:10:56 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int destroy_window(t_data *data);
 void set_pixel(t_image *img, int x, int y, uint32_t color);
 // utils.c
 t_point new_point(double x, double y, double z, uint32_t color);
-uint32_t get_color_gradient(t_point *a, t_point *b, int position, int is_gentle);
+uint32_t get_color_gradient(t_point a, t_point b, int position, int is_gentle);
 double double_min(double a, double b);
 double double_max(double a, double b);
 int get_sign(int x);
