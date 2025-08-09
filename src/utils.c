@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:06:13 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/08 18:36:06 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 14:04:47 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ t_point new_point(double x, double y, double z, uint32_t color) {
   point.transformed_z = -1;
   point.color = color;
   return point;
+}
+
+// dx cannot be 0
+int get_sign(int x) {
+  if (x > 0)
+    return 1;
+  if (x < 0)
+    return -1;
+  return 0;
 }
 
 double double_min(double a, double b) {

@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 13:56:28 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 14:05:10 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int destroy_window(t_data *data);
 t_point new_point(double x, double y, double z, uint32_t color);
 double double_min(double a, double b);
 double double_max(double a, double b);
+int get_sign(int x);
 // additional_libft.c
 void make_upper(unsigned int i, char *c);
 int count_num_cols(char *line);
