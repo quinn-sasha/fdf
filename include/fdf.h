@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 09:40:55 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 13:56:28 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ void handle_mlx_error(t_data *data);
 // hook.c
 int handle_keypress(int keysym, t_data *data);
 int destroy_window(t_data *data);
+// draw.c
+
 // utils.c
 t_point new_point(double x, double y, double z, uint32_t color);
 double double_min(double a, double b);
@@ -114,5 +116,6 @@ double double_max(double a, double b);
 void make_upper(unsigned int i, char *c);
 int count_num_cols(char *line);
 void *free_words(char **words);
+int ft_abs(int num);
 
 #endif

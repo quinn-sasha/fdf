@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:05:24 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/06 11:57:55 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 13:56:05 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,10 @@ void	*free_words(char **words)
 	}
 	free(words);
 	return (NULL);
+}
+
+int ft_abs(int num) {
+  if (num < 0)
+    return (-num);
+  return (num);
 }
