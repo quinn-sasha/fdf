@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 17:38:02 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 19:53:07 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 20:09:38 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ uint32_t get_color_gradient(t_point a, t_point b, int position, int is_gentle) {
     return a.color;
   int ratio;
   if (is_gentle)
-    ratio = (position - a.x) / (b.x - a.x);
+    ratio = (position - a.transformed_x) / (b.transformed_x - a.transformed_x);
   else
-    ratio = (position - a.y) / (b.y - a.y);
+    ratio = (position - a.transformed_y) / (b.transformed_y - a.transformed_y);
   uint32_t color = a.color + ratio * (b.color - a.color);
   return color;
 }
