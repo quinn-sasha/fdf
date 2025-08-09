@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 14:05:10 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 15:00:11 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void handle_mlx_error(t_data *data);
 int handle_keypress(int keysym, t_data *data);
 int destroy_window(t_data *data);
 // draw.c
-
+void set_pixel(t_image *img, int x, int y, uint32_t color);
 // utils.c
 t_point new_point(double x, double y, double z, uint32_t color);
 double double_min(double a, double b);
