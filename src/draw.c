@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 14:06:33 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 17:55:22 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 18:09:09 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,12 @@ void draw_line(t_point a, t_point b, t_image *img) {
   return draw_steep_line(a, b, img);
 }
 
-void draw_map(t_data *data) {
+int draw_map(t_data *data) {
+  if (data->window == NULL)
+    return (FAILED);
   t_point **grid = data->map.grid;
   int row = 0;
-  while (data->map.num_rows) {
+  while (row < data->map.num_rows) {
     int col = 0;
     while (col < data->map.num_cols) {
       if (col < data->map.num_cols - 1) {
@@ -92,4 +94,5 @@ void draw_map(t_data *data) {
     }
     row++;
   }
+  return (SUCESS);
 }

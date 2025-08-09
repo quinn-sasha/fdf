@@ -46,9 +46,9 @@ int main(char argc, char *argv[])
 
   mlx_hook(data.mlx, KeyPress, KeyPressMask, &handle_keypress, &data);
   mlx_hook(data.mlx, DestroyNotify, 0, &destroy_window, &data);
-  mlx_loop_hook();
+  mlx_loop_hook(data.mlx, &draw_map, &data);
   mlx_loop(data.mlx);
-  // Draw line
+
   free_grid(&data.map);
   free_mlx_resources_if_allocated(&data);
   exit(EXIT_SUCCESS);

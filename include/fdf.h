@@ -41,6 +41,9 @@
 # define FORMAT "Usage: ./fdf filename.fdf"
 # define MALLOC "malloc() failed"
 # define MLX_ERROR "Minilibx library failed"
+// Status
+# define SUCESS 0
+# define FAILED -1
 
 
 typedef struct s_point {
@@ -111,7 +114,7 @@ void set_pixel(int x, int y, t_image *img,  uint32_t color);
 void draw_gentle_line(t_point a, t_point b, t_image *img);
 void draw_steep_line(t_point a, t_point b, t_image *img);
 void draw_line(t_point a, t_point b, t_image *img);
-void draw_map(t_data *data);
+int draw_map(t_data *data);
 // utils.c
 t_point new_point(double x, double y, double z, uint32_t color);
 uint32_t get_color_gradient(t_point a, t_point b, int position, int is_gentle);
