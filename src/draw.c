@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 14:06:33 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 20:11:02 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 20:31:08 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,58 +20,54 @@ void set_pixel(int x, int y, t_image *img,  uint32_t color) {
 }
 
 void draw_gentle_line(t_point a, t_point b, t_image *img) {
-  int dx = b.transformed_x - a.transformed_x;
-  int dy = b.transformed_y - a.transformed_y;
-  int discriminant = 2 * ft_abs(dy) - ft_abs(dx);
+  int discriminant = 2 * ft_abs(a.dy) - ft_abs(a.dx);
 
   set_pixel(a.transformed_x, a.transformed_y, img, a.color);
   int x = a.transformed_x;
   int y = a.transformed_y;
   int i = 0;
-  while (i < ft_abs(dx)) {
+  while (i < ft_abs(a.dx)) {
     i++;
-    x += get_direction(dx);
+    x += get_direction(a.dx);
     uint32_t color = get_color_gradient(a, b, x, TRUE);
     if (discriminant < 0) {
       set_pixel(x, y, img, color);
-      discriminant += 2 * ft_abs(dy);
+      discriminant += 2 * ft_abs(a.dy);
       continue;
     }
-    y += get_direction(dy);
+    y += get_direction(a.dy);
     set_pixel(x, y, img, color);
-    discriminant += 2 * ft_abs(dy) - 2 * ft_abs(dx);
+    discriminant += 2 * ft_abs(a.dy) - 2 * ft_abs(a.dx);
   }
 }
 
 void draw_steep_line(t_point a, t_point b, t_image *img) {
-  int dx = b.transformed_x - a.transformed_x;
-  int dy = b.transformed_y - a.transformed_y;
-  int discriminant = ft_abs(dy) - 2 * ft_abs(dx);
+  int discriminant = ft_abs(a.dy) - 2 * ft_abs(a.dx);
 
   set_pixel(a.transformed_x, a.transformed_y, img, a.color);
   int x = a.transformed_x;
   int y = a.transformed_y;
   int i = 0;
-  while (i < ft_abs(dy)) {
+  while (i < ft_abs(a.dy)) {
     i++;
-    y += get_direction(dy);
+    y += get_direction(a.dy);
     uint32_t color = get_color_gradient(a, b, y, FALSE);
     if (discriminant > 0) {
       set_pixel(x, y, img, color);
-      discriminant += -2 * ft_abs(dx);
+      discriminant += -2 * ft_abs(a.dx);
       continue;
     }
-    x += get_direction(dx);
+    x += get_direction(a.dx);
     set_pixel(x, y, img, color);
-    discriminant += 2 * ft_abs(dy) - 2 * ft_abs(dx);
+    discriminant += 2 * ft_abs(a.dy) - 2 * ft_abs(a.dx);
   }
 }
 
 void draw_line(t_point a, t_point b, t_image *img) {
-  int dx = b.transformed_x - a.transformed_x;
-  int dy = b.transformed_y - a.transformed_x;
+  a.dx = b.transformed_x - a.transformed_x;
+  a.dy = b.transformed_y - a.transformed_x;
 
-  if (ft_abs(dx) > ft_abs(dy))
+  if (ft_abs(a.dx) > ft_abs(a.dy))
     return draw_gentle_line(a, b, img);
   return draw_steep_line(a, b, img);
 }
