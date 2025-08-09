@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 16:57:52 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 17:52:04by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ int handle_keypress(int keysym, t_data *data);
 int destroy_window(t_data *data);
 // draw.c
 void set_pixel(int x, int y, t_image *img,  uint32_t color);
+void draw_gentle_line(t_point a, t_point b, t_image *img);
+void draw_steep_line(t_point a, t_point b, t_image *img);
+void draw_line(t_point a, t_point b, t_image *img);
 void draw_map(t_data *data);
 // utils.c
 t_point new_point(double x, double y, double z, uint32_t color);
