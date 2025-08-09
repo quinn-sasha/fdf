@@ -53,6 +53,8 @@ typedef struct s_point {
   int transformed_x;
   int transformed_y;
   int transformed_z;
+  int dx;
+  int dy;
   uint32_t color;
 } t_point;
 
