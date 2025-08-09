@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 14:06:33 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 17:48:25 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 17:55:22 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,15 @@ void draw_line(t_point a, t_point b, t_image *img) {
 }
 
 void draw_map(t_data *data) {
+  t_point **grid = data->map.grid;
   int row = 0;
   while (data->map.num_rows) {
     int col = 0;
     while (col < data->map.num_cols) {
-      t_point **grid = data->map.grid;
-      int last_col = data->map.num_cols - 1;
-      if (col < last_col) {
+      if (col < data->map.num_cols - 1) {
         draw_line(grid[row][col], grid[row][col + 1], &data->img);
       }
-      int last_row = data->map.num_rows - 1;
-      if (row < last_row) {
+      if (row < data->map.num_rows - 1) {
         draw_line(grid[row][col], grid[row + 1][col], &data->img);
       }
       col++;
