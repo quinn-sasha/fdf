@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 16:00:03 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 16:36:17 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/09 16:57:52 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,14 @@ void handle_mlx_error(t_data *data);
 int handle_keypress(int keysym, t_data *data);
 int destroy_window(t_data *data);
 // draw.c
-void set_pixel(t_image *img, int x, int y, uint32_t color);
+void set_pixel(int x, int y, t_image *img,  uint32_t color);
 void draw_map(t_data *data);
 // utils.c
 t_point new_point(double x, double y, double z, uint32_t color);
 uint32_t get_color_gradient(t_point a, t_point b, int position, int is_gentle);
 double double_min(double a, double b);
 double double_max(double a, double b);
-int get_sign(int x);
+int get_direction(int dx);
 // additional_libft.c
 void make_upper(unsigned int i, char *c);
 int count_num_cols(char *line);
