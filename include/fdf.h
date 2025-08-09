@@ -100,6 +100,7 @@ void translate(t_map* map, double dx, double dy);
 void scale(t_map *map, double rate);
 // color.c
 uint32_t parse_color(char *str);
+uint32_t get_color_gradient(t_point a, t_point b, int position, int is_gentle);
 // error.c
 int is_valid_filename(char *filename);
 void handle_error(char *message);
@@ -117,7 +118,6 @@ void draw_line(t_point a, t_point b, t_image *img);
 int draw_map(t_data *data);
 // utils.c
 t_point new_point(double x, double y, double z, uint32_t color);
-uint32_t get_color_gradient(t_point a, t_point b, int position, int is_gentle);
 double double_min(double a, double b);
 double double_max(double a, double b);
 int get_direction(int dx);
