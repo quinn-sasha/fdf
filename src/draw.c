@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 14:06:33 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 20:31:08 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/11 16:23:35 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void draw_steep_line(t_point a, t_point b, t_image *img) {
 
 void draw_line(t_point a, t_point b, t_image *img) {
   a.dx = b.transformed_x - a.transformed_x;
-  a.dy = b.transformed_y - a.transformed_x;
+  a.dy = b.transformed_y - a.transformed_y;
 
   if (ft_abs(a.dx) > ft_abs(a.dy))
     return draw_gentle_line(a, b, img);
@@ -90,5 +90,6 @@ int draw_map(t_data *data) {
     }
     row++;
   }
+  mlx_put_image_to_window(data->mlx, data->window, data->img.mlx_img, 0, 0);
   return (SUCESS);
 }
