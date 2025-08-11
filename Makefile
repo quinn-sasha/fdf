@@ -29,8 +29,8 @@ LIBFT := $(LIBFT_DIR)/libft.a
 GET_NEXT_LINE := $(GET_NEXT_LINE_DIR)/libget_next_line.a
 MINILIBX := $(MINILIBX_DIR)/libmlx_Linux.a
 
-LIB_PATH := -L$(LIBFT_DIR) -L$(GET_NEXT_LINE_DIR) -L$(MINILIBX_DIR)
-LIB_LINK := -lft -lget_next_line  -lmlx_Linux -lm -lXext -lX11
+LIB_PATH := -L$(GET_NEXT_LINE_DIR) -L$(LIBFT_DIR) -L$(MINILIBX_DIR)
+LIB_LINK := -lget_next_line -lft -lmlx_Linux -lm -lXext -lX11
 LIB := $(LIB_PATH) $(LIB_LINK)
 
 all: $(NAME)
