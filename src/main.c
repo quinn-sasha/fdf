@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:18:10 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/11 12:18:59 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/11 14:23:54 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int main(int argc, char *argv[])
   data.map = map;
   init_mlx_resources(&data);
 
-  mlx_hook(data.mlx, KeyPress, KeyPressMask, &handle_keypress, &data);
-  mlx_hook(data.mlx, DestroyNotify, 0, &destroy_window, &data);
+  mlx_hook(data.window, KeyPress, KeyPressMask, &handle_keypress, &data);
+  mlx_hook(data.window, DestroyNotify, 0, &destroy_window, &data);
   mlx_loop_hook(data.mlx, &draw_map, &data);
   mlx_loop(data.mlx);
 
