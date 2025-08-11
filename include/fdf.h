@@ -32,13 +32,14 @@
 // display
 # define WIDTH 1920
 # define HEIGHT 1080
+# define MARGIN 0.85
 // Color
 # define WHITE 0xFFFFFFFF
 # define DEFAULT_COLOR WHITE
 # define OPAQUE_MASK 0xFF000000
-
 // Error messages
 # define FORMAT "Usage: ./fdf filename.fdf"
+# define INVALID_MAP "Input map is invalid"
 # define MALLOC "malloc() failed"
 # define MLX_ERROR "Minilibx library failed"
 // Status

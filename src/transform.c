@@ -54,6 +54,8 @@ void make_map_fit_on_display(t_map *map) {
   double map_height = map->max_y - map->min_y;
   double x_scaling_rate = WIDTH / map_width;
   double y_scaling_rate = HEIGHT / map_height;
+  x_scaling_rate *= MARGIN;
+  y_scaling_rate *= MARGIN;
   double scaling_rate = double_min(x_scaling_rate, y_scaling_rate);
   scale(map, scaling_rate);
 }
