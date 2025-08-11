@@ -6,24 +6,26 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 11:22:20 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/03 13:25:50 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/11 17:57:52 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	*handle_error(char **prefix)
+static void	*handle_error(char **prefix, char **buffer)
 {
+	free(*buffer);
 	if (*prefix)
-		free(prefix);
+		free(*prefix);
 	*prefix = NULL;
 	return (NULL);
 }
 
-static void	*handle_end_of_file(char **prefix)
+static void	*handle_end_of_file(char **prefix, char **buffer)
 {
 	char	*temp;
 
+	free(*buffer);
 	if (*prefix == NULL)
 		return (NULL);
 	temp = *prefix;
@@ -73,13 +75,13 @@ char	*get_next_line(int fd)
 	{
 		buffer = malloc(BUFFER_SIZE + 1);
 		if (!buffer)
-			return (handle_error(&prefix));
+			return (handle_error(&prefix, &buffer));
 		ft_bzero(buffer, BUFFER_SIZE + 1);
 		num_bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (num_bytes_read < 0)
-			return (handle_error(&prefix));
+			return (handle_error(&prefix, &buffer));
 		if (num_bytes_read == 0 && ft_strchr(prefix, '\n') == NOT_FOUND)
-			return (handle_end_of_file(&prefix));
+			return (handle_end_of_file(&prefix, &buffer));
 		join_prefix_and_buffer(&prefix, &buffer);
 		newline_pos = ft_strchr(prefix, '\n');
 		if (newline_pos == NOT_FOUND)
