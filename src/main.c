@@ -9,7 +9,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/fdf.h"
+#include "../include/fdf.h"
 
 void init_mlx_resources(t_data *data) {
   data->mlx = NULL;
