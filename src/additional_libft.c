@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 11:05:24 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 13:56:05 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/12 08:20:37 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void make_upper(unsigned int i, char *c) {
   (void)i;
-  ft_toupper(*c);
+  *c = ft_toupper(*c);
 }
 
 int count_num_cols(char *line) {
