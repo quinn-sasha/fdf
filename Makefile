@@ -55,7 +55,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	$(RMDIR) $(OBJS)
+	$(RMDIR) $(OBJ_DIR)
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(GET_NEXT_LINE_DIR)
 	make clean -C $(MINILIBX_DIR)
