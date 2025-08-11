@@ -13,7 +13,7 @@
 
 void isometric_project(t_map *map) {
   double angle1 = (double)45 * (M_PI / 180);
-  double angle2 = atan(sin(45)) * (M_PI / 180);
+  double angle2 = atan(1.0 / sqrt(3.0));
   rotate_around_z_axis(map, angle1);
   rotate_around_x_axis(map, angle2);
 }
@@ -22,8 +22,8 @@ void isometric_project(t_map *map) {
 void set_min_and_max_x_y(t_map *map) {
   map->min_x = DBL_MAX;
   map->min_y = DBL_MAX;
-  map->max_x = DBL_MIN;
-  map->max_y = DBL_MIN;
+  map->max_x = -DBL_MAX;
+  map->max_y = -DBL_MAX;
 
   int row = 0;
   while (row < map->num_rows) {
