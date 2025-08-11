@@ -27,8 +27,11 @@ void set_num_rows_and_columns(t_map *map, const char *filename) {
     line = get_next_line(fd);
     if (line == NULL)
       break;
-    if (count_num_cols(line) != map->num_cols)
+    if (count_num_cols(line) != map->num_cols) {
+      free(line);
+      close(fd);
       return handle_error(INVALID_MAP);
+    }
     free(line);
     num_rows += 1;
   }
