@@ -12,14 +12,16 @@
 
 #include "../include/fdf.h"
 
-int destroy_window(t_data *data) {
-  mlx_destroy_window(data->mlx, data->window);
-  data->window = NULL;
-  return (0);
+int	destroy_window(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->window);
+	data->window = NULL;
+	return (0);
 }
 
-int handle_keypress(int keysym, t_data *data) {
-  if (keysym == XK_Escape)
-    return destroy_window(data);
-  return (0);
+int	handle_keypress(int keysym, t_data *data)
+{
+	if (keysym == XK_Escape)
+		return (destroy_window(data));
+	return (0);
 }
