@@ -6,7 +6,7 @@
 /*   By: squinn <squinn@student.42tokyo.jp>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 17:38:02 by squinn            #+#    #+#             */
-/*   Updated: 2025/08/09 20:09:38 by squinn           ###   ########.fr       */
+/*   Updated: 2025/08/12 09:15:22 by squinn           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 // Assume map color format is correct
 uint32_t parse_color(char *str) {
   int i = 0;
+  if (str[i] == '-')
+    i++;
   while (ft_isdigit(str[i])) {
     i++;
   }
