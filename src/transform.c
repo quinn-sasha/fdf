@@ -12,7 +12,7 @@
 #include "../include/fdf.h"
 
 void isometric_project(t_map *map) {
-  double angle1 = (double)45 * (M_PI / 180);
+  double angle1 = -(double)45 * (M_PI / 180);
   double angle2 = atan(1.0 / sqrt(3.0));
   rotate_around_z_axis(map, angle1);
   rotate_around_x_axis(map, angle2);
